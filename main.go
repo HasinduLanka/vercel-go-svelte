@@ -18,7 +18,7 @@ func main() {
 
 	multiplexer.HandleFunc("/api/hello", api.HelloEndpoint)
 
-	log.Println("Listening on port 20000. Visit http://localhost:20000")
+	log.Println("Listening on port 20000. Visit http://localhost:20000 if you're running this locally.")
 
 	// Blocks until the program is terminated
 	serveErr := http.ListenAndServe(":20000", multiplexer)
