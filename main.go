@@ -7,7 +7,8 @@ import (
 	"github.com/HasinduLanka/vercel-go-svelte/api"
 )
 
-// This source file is only intended to be run locally. It will not work on Vercel.
+// This source file faciliates a simple web server that serves static files and handles requests to the /api/hello endpoint.
+// This will not be executed on Vercel.
 
 func main() {
 
