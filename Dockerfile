@@ -1,6 +1,4 @@
-FROM golang:alpine AS builder
-
-RUN apk add git
+FROM golang:1.18 AS builder
 
 # Set necessary environmet variables needed for our image
 ENV GO111MODULE=on \
@@ -28,18 +26,10 @@ RUN go build -o main .
 # Move to /dist directory as the place for resulting binary folder
 WORKDIR /dist
 
-# Copy binary from build to main folder
+# Copy binary and frontend from build to main folder
 RUN cp /src/main .
 RUN cp -r /src/frontend ./frontend
 
-############################
-# STEP 2 build a small image
-############################
-FROM scratch
-
-COPY --from=builder /dist/ /
-
 EXPOSE 20000
 
-# Command to run the executable
-ENTRYPOINT ["/main"]
+ENTRYPOINT ["/dist/main"]
